@@ -6,7 +6,7 @@ services:
   server:
     build: ./crates/coffee-back
     ports:
-      - "${BACKEND_PORT}:8081"
+      - "${BACk_PORT}:8081"
     command: [ "coffee-back" ]
     env_file:
       - .env
