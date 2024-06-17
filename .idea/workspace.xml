@@ -8,14 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bd36f30-c561-4e2a-995c-43905f3989ca" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/container-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crates/shared/Cargo.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crates/shared/src/env.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crates/shared/src/lib.rs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +124,7 @@
       <workItem from="1718340237375" duration="14062000" />
       <workItem from="1718506346425" duration="30506000" />
       <workItem from="1718618752861" duration="3740000" />
-      <workItem from="1718628657174" duration="2015000" />
+      <workItem from="1718628657174" duration="2376000" />
     </task>
     <servers />
   </component>
