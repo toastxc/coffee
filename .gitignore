@@ -2,3 +2,7 @@
 .idea
 crates/coffee-front/node_modules
 crates/coffee-front/package-lock.json
+crates/coffee-front/dist/
+.idea/workspace.xml
+crates/coffee-front/target
+crates/coffee-back/target
