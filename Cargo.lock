@@ -1329,6 +1329,7 @@ dependencies = [
 [[package]]
 name = "shared"
 version = "0.1.0"
+source = "git+https://github.com/toastxc/coffee-shared/?branch=main#56145c958ab0b3c1c70565527c2c2e8ef1a5b082"
 dependencies = [
  "serde",
 ]

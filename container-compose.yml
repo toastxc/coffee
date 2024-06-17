@@ -4,7 +4,7 @@ version: "3.8"
 services:
 
   server:
-    build: .
+    build: ./crates/coffee-back
     ports:
       - "${BACKEND_PORT}:8081"
     command: [ "coffee-back" ]

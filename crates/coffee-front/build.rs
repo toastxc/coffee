@@ -7,9 +7,10 @@ use std::thread::sleep;
 use std::time::Duration;
 
 fn main() {
+    // sleep(Duration::from_secs(6));
     // println!("cargo:rerun-if-changed=.env");
     // sleep(Duration::from_secs(10));
-    let dest_path = "../shared/src/env.rs";
+    let dest_path = "src/env.rs";
     let mut f = File::create(&dest_path).unwrap();
 
     // use the dotenv crate to get the .env values

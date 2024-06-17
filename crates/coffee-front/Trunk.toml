@@ -1,0 +1,4 @@
+[watch]
+# Paths to ignore.
+ignore = ["src/env.rs"]
+

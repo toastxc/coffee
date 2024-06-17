@@ -18,12 +18,8 @@ RUN apt-get update && \
 
 
 
-COPY crates/coffee-back/src ./src
+COPY ./src ./src
 COPY Cargo.* ./
 
-#COPY crates/shared ../shared
-#COPY *.json ./
-#COPY ../../.env ./.env
 
-# compile server
 RUN cargo install --path .

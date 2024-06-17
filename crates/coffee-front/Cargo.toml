@@ -23,10 +23,10 @@ reqwasm = "0.5.0"
 serde-wasm-bindgen = "0.6.5"
 serde = { version = "1.0.203", features = ["derive"] }
 wasm-bindgen-futures = "0.4.42"
-shared = {path = "../shared"}
+#shared = {path = "../shared"}
 
 parking_lot = { version = "0.11.1", features = ["wasm-bindgen"]}
-
+shared = { git = "https://github.com/toastxc/coffee-shared/", branch = "main" }
 #tokio = { version = "1.38.0", features = ["time"] }
 
 wasm-timer = "0.2.5"

@@ -14,16 +14,18 @@ use tower_http::cors::{Any, CorsLayer};
 
 #[tokio::main]
 async fn main() {
+
+    println!("INIT: starting...");
     // initialize tracing
     tracing_subscriber::fmt::init();
-    dotenv().unwrap();
+    dotenv().ok();
+    println!("INIT: dotenv...");
 
 
     let db = Db::new();
+    println!("INIT: db...");
     // build our application with a route
     let app = Router::new()
-
-
         .layer(
             CorsLayer::new()
                 .allow_origin("*".parse::<HeaderValue>().unwrap())
@@ -37,13 +39,14 @@ async fn main() {
         .route("/complete", delete(complete))
         .route("/fetch", get(fetch))
         .layer(Extension(db));
-
+    println!("INIT: app...");
 
     // run our app with hyper, listening globally on port 3000
     let listener = tokio::net::TcpListener::bind(env::var("APP_BACK_URI").unwrap())
         .await
         .unwrap();
     axum::serve(listener, app).await.unwrap();
+    println!("INIT: byebye...");
 }
 
 // basic handler that responds with a static string
@@ -83,14 +86,12 @@ async fn complete(
     match result {
         None => {
             StatusCode::NOT_FOUND
-
         }
         Some(_) => {
             db.0.write().await.remove(&id);
             StatusCode::NO_CONTENT
         }
     }
-
 }
 
 // order id | order info
