@@ -5,7 +5,7 @@ use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::JsCast;
 use shared::{OrderInfo, OrderPayload};
-
+use crate::env;
 fn uri(i: impl Into<String>) -> String {
     let ssl = match shared::env::APP_SSL_ENABLED
         .parse::<bool>()
@@ -14,7 +14,7 @@ fn uri(i: impl Into<String>) -> String {
         true => "https://",
         false => "http://",
     };
-    format!("{}{}{}", ssl, shared::env::APP_BACK_URI, i.into())
+    format!("{}{}{}", ssl,  env::APP_BACK_ADDR, i.into())
 }
 
 pub struct Client(Request);
