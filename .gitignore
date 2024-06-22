@@ -6,3 +6,5 @@ crates/coffee-front/dist/
 .idea/workspace.xml
 crates/coffee-front/target
 crates/coffee-back/target
+.env
+crates/coffee-front/src/env.rs

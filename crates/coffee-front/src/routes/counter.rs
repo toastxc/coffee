@@ -27,6 +27,7 @@ pub fn counter() -> Html {
     }
 
 
+
     html! {<>
 
              if orders.is_empty() {
