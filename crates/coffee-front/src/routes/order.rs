@@ -61,15 +61,11 @@ pub fn order() -> Html {
                 let (c, m, t) = ( *coffee_type.clone(), *milk_type.clone(),*temp_type.clone() );
                 wasm_bindgen_futures::spawn_local(async move {
                     has_spinner.set(true);
-                   // if let Ok(Ok(data)) = Client::order(OrderPayload {coffee: c,milk: m ,temp: t}).await.map( async |a: Response| a.json::<i32>().await) {
-                   //      coffee_ordered.set(Some(data));
-                   //
-                   //      }
+
                     if let Ok(data) =  Client::order(OrderPayload {coffee: c,milk: m ,temp: t}).await {
-                        // if let Ok(data) = data.json::<u8>().await {
                             coffee_ordered.set(Some(data));
 
-                        // }
+
                     }
                      has_spinner.set(false);
 
