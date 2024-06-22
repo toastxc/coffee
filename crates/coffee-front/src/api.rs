@@ -7,7 +7,7 @@ use wasm_bindgen::JsCast;
 use shared::{OrderInfo, OrderPayload};
 use crate::env;
 fn uri(i: impl Into<String>) -> String {
-    let ssl = match shared::env::APP_SSL_ENABLED
+    let ssl = match env::APP_SSL_ENABLED
         .parse::<bool>()
         .expect("invalid env variable APP_SSL_ENABLED")
     {
