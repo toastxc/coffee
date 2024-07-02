@@ -1,5 +1,5 @@
 ## Coffee app
-This is a small project, of testing out Rust based backend & front end tech. 
+This is a small project, of testing out Rust based backend & front end tech.
 
 
 
@@ -20,3 +20,7 @@ cd coffee
 podman-compose up -d
 # frontend 
 trunk build --release
+```
+
+### Coffee-shared
+Coffee-shared is a shared dependancy between the backend and frontend, for the sake of easier compliation and docker issues [it has been moved to its own repository](https://github.com/toastxc/coffee-shared).
