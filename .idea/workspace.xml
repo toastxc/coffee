@@ -8,8 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bd36f30-c561-4e2a-995c-43905f3989ca" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +29,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;toastxc&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/toastxc/coffee.git&quot;,
+    &quot;accountId&quot;: &quot;97bb8008-b070-4041-9915-bafb287f6798&quot;
+  }
+}</component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="iqz8i7al" />
   </component>
@@ -48,7 +60,7 @@
     &quot;RunOnceActivity.rust.reset.selective.auto.import&quot;: &quot;true&quot;,
     &quot;Shell Script.front run.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/kaiaxc/projects/stunner&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kaiaxc/projects/cargo-pak&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -130,7 +142,12 @@
       <workItem from="1718695800163" duration="10121000" />
       <workItem from="1718935313740" duration="11000" />
       <workItem from="1718936154563" duration="4820000" />
-      <workItem from="1719042233061" duration="356000" />
+      <workItem from="1719042233061" duration="4981000" />
+      <workItem from="1719143713268" duration="2000" />
+      <workItem from="1719143727239" duration="43000" />
+      <workItem from="1719300276007" duration="8000" />
+      <workItem from="1719300398464" duration="1625000" />
+      <workItem from="1719899317356" duration="2484000" />
     </task>
     <servers />
   </component>

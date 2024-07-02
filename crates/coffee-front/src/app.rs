@@ -1,8 +1,8 @@
 use yew::prelude::*;
 
+use crate::routes::counter::Counter;
 use crate::routes::home::Home;
 use yew_router::prelude::*;
-use crate::routes::counter::Counter;
 
 use crate::routes::order::Order;
 
@@ -42,7 +42,7 @@ fn switch(routes: Route) -> Html {
             }
         }
         Route::Counter => {
-            html!{
+            html! {
                 <Counter/>
             }
         }

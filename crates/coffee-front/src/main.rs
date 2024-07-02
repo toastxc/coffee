@@ -2,7 +2,6 @@ pub mod api;
 pub mod app;
 pub mod env;
 pub mod routes;
-pub mod delay;
 
 use app::App;
 
