@@ -51,10 +51,11 @@ pub fn scard(props: &SCardProps) -> Html {
     html! {
 
 
-    <div class="card" style="width: 100%; height: 100%" >
+    <div class="card"
+        style="  height: 100%; width: auto;">
       <div class="card-image" >
         <figure class="image is-4by3">
-          <img
+          <img  style="width: auto;"
             src={props.image.0.clone()}
             alt={props.image.1.clone()}
           />
