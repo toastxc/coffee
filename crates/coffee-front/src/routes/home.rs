@@ -19,13 +19,13 @@ pub fn home() -> Html {
       margin-right: 10%;">
 
             <Scard
-            image={("https://coffeforus.com/wp-content/uploads/2022/12/Americano-coffee-recipe.jpg".to_string(), "image of coffee".to_string())}
+            image={("https://repo.toastxc.xyz/coffee/consumer.png".to_string(), "image of coffee".to_string())}
             title="Consumer" description="Order a coffee"
             onclick={onclick_order}
             />
 
             <Scard
-            image={("https://cdn11.bigcommerce.com/s-pmiia69/images/stencil/1030x1030/products/633/3626/BES870XL-2b__34495.1547840804.jpg?c=2".to_string(), "Large coffee machine".to_string())}
+            image={("https://repo.toastxc.xyz/coffee/producer.png".to_string(), "Large coffee machine".to_string())}
             title="Producer"
             description="Manage incoming orders"
             onclick={onclick_counter} />
@@ -51,7 +51,7 @@ pub fn scard(props: &SCardProps) -> Html {
     html! {
 
 
-    <div class="card" style="width: 100%; height: 50%" >
+    <div class="card" style="width: 100%; height: 100%" >
       <div class="card-image" >
         <figure class="image is-4by3">
           <img
