@@ -121,7 +121,7 @@ pub fn order() -> Html {
             <footer class="modal-card-foot">
               <div class="buttons">
                 <button class="button is-success" onclick={Callback::from(move |_|{
-                    //coffee_ordered.set(None);
+                    coffee_ordered.set(None);
                 })}>{"Ok"}</button>
               </div>
             </footer>
