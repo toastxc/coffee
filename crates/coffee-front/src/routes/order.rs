@@ -66,8 +66,7 @@ pub fn order() -> Html {
                     wasm_bindgen_futures::spawn_local(async move {
 
                         if let Ok(data) =  Client::order(payload).await {
-                            //coffee_ordered.set(Some(data));
-                            coffee_ordered.set(None);
+                            coffee_ordered.set(Some(data));
                         }
                     });
 
