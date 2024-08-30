@@ -51,86 +51,92 @@ pub fn order() -> Html {
     };
     let html = html! {<div class={"container"}>
 
-            <br/>
-
-        <form onsubmit={
-                let coffee_ordered = coffee_ordered.clone();
-
-                Callback::from(move |event: SubmitEvent|{
-
-                event.prevent_default();
 
 
-                         let payload = payload.clone();
-                    let coffee_ordered = coffee_ordered.clone();
-                    wasm_bindgen_futures::spawn_local(async move {
+        <p>{"dev1"}</p>
+             <br/>
 
-                        if let Ok(data) =  Client::order(payload).await {
-                            coffee_ordered.set(Some(data));
-                        }
-                    });
+         <form onsubmit={
+                 let coffee_ordered = coffee_ordered.clone();
 
-                })}>
-            <DropButton label="Interface" options={ui} selected={ui_type.clone()}/>
+                 Callback::from(move |event: SubmitEvent|{
+
+                 event.prevent_default();
 
 
-          <TextInput label={"Name"} placeholder={None} required={true} value={customer_name}/>
+                          let payload = payload.clone();
+                     let coffee_ordered = coffee_ordered.clone();
+                     wasm_bindgen_futures::spawn_local(async move {
+
+                         if let Ok(data) =  Client::order(payload).await {
+                             coffee_ordered.set(Some(data));
+                         }
+                     });
+
+                 })}>
+             <DropButton label="Interface" options={ui} selected={ui_type.clone()}/>
 
 
-
-        if *ui_type == 0 {
-            <DropButton label="Coffee type" options={COFFEE_TYPE.into_iter().collect::<Vec<&'static str>>()}selected={coffee_type.clone()}/>
-            <DropButton label="Milk type" options={MILK_TYPE.into_iter().collect::<Vec<&'static str>>()} selected={milk_type.clone()}/>
-            <DropButton label="Temperature" options={TEMP_TYPE.into_iter().collect::<Vec<&'static str>>()} selected={temp_type.clone()}/>
-               <DropButton label="Sugar" options={SUGAR_TYPE.into_iter().collect::<Vec<&'static str>>()} selected={sugar_type.clone()}/>
-
-
-        }else {
-
-    //          <div class="field">
-    //   <label class="label">{"Order"}</label>
-    //   <div class="control">
-    //     <input class="input" type="text" placeholder="A large coffee with extra coffee"/>
-    //   </div>
-    // </div>
-
-          <TextInput label={"Order"} placeholder={Some("Coffee with extra coffee")} required={true} value={coffee_type_custom}/>
-
-
-        }
-                <br/>
+           <TextInput label={"Name"} placeholder={None} required={true} value={customer_name}/>
 
 
 
+         if *ui_type == 0 {
+             <DropButton label="Coffee type" options={COFFEE_TYPE.into_iter().collect::<Vec<&'static str>>()}selected={coffee_type.clone()}/>
+             <DropButton label="Milk type" options={MILK_TYPE.into_iter().collect::<Vec<&'static str>>()} selected={milk_type.clone()}/>
+             <DropButton label="Temperature" options={TEMP_TYPE.into_iter().collect::<Vec<&'static str>>()} selected={temp_type.clone()}/>
+                <DropButton label="Sugar" options={SUGAR_TYPE.into_iter().collect::<Vec<&'static str>>()} selected={sugar_type.clone()}/>
 
 
-            <button type={"submit"} class="button is-primary" id={"form"}
+         }else {
 
-        >{"Submit"}</button>
+     //          <div class="field">
+     //   <label class="label">{"Order"}</label>
+     //   <div class="control">
+     //     <input class="input" type="text" placeholder="A large coffee with extra coffee"/>
+     //   </div>
+     // </div>
 
-            <div class={format!("modal {}", coffee_ordered_text)}>
-          <div class="modal-background"></div>
-          <div class="modal-card">
-            <header class="modal-card-head">
-              <p class="modal-card-title">{"Successfully ordered!"}</p>
-            </header>
-            <section class="modal-card-body">
-                <h1>{format!("Order No {}", coffee_ordered.unwrap_or_default())}</h1>
-            </section>
-            <footer class="modal-card-foot">
-              <div class="buttons">
-                <button class="button is-success" onclick={Callback::from(move |_|{
-                    coffee_ordered.set(None);
-                })}>{"Ok"}</button>
-              </div>
-            </footer>
-          </div>
-        </div>
+           <TextInput label={"Order"} placeholder={Some("Coffee with extra coffee")} required={true} value={coffee_type_custom}/>
 
-        </form>
 
-                 </div>
-            };
+         }
+                 <br/>
+
+
+
+
+
+             <button type={"submit"} class="button is-primary" id={"form"}
+
+         >{"Submit"}</button>
+
+
+             </form>
+
+             <div class={format!("modal {}", coffee_ordered_text)}>
+           <div class="modal-background"></div>
+           <div class="modal-card">
+             <header class="modal-card-head">
+               <p class="modal-card-title">{"Successfully ordered!"}</p>
+             </header>
+             <section class="modal-card-body">
+                 <h1>{format!("Order No {}", coffee_ordered.unwrap_or_default())}</h1>
+             </section>
+             <footer class="modal-card-foot">
+               <div class="buttons">
+                 <button class="button is-success" onclick={Callback::from(move |_|{
+                     coffee_ordered.set(None);
+                 })}>{"Ok"}</button>
+               </div>
+             </footer>
+           </div>
+         </div>
+
+    //     </form>
+
+                  </div>
+             };
 
     html
 }
