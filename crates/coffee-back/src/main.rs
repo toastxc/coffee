@@ -60,18 +60,13 @@ async fn up() -> StatusCode {
     StatusCode::OK
 }
 
-async fn order(
-    Extension(db): Extension<Db>,
-    Json(payload): Json<OrderInfo>,
-) -> impl IntoResponse {
+async fn order(Extension(db): Extension<Db>, Json(payload): Json<OrderInfo>) -> impl IntoResponse {
     let rand = random::<u8>();
 
     let mut payload = payload;
     payload.date = Option::from(SystemTime::now());
-    db.0.write().await.insert(
-        rand,
-        payload,
-    );
+    payload.id = Some(rand);
+    db.0.write().await.insert(rand, payload);
     (StatusCode::OK, Json(rand))
 }
 
