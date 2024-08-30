@@ -1,6 +1,6 @@
 use crate::api::Client;
-use crate::routes::{COFFEE_TYPE, MILK_TYPE, TEMP_TYPE};
 use shared::OrderInfo;
+use shared::{COFFEE_TYPE, MILK_TYPE, TEMP_TYPE};
 use std::time::Duration;
 use yew::prelude::*;
 
@@ -29,48 +29,66 @@ pub fn counter() -> Html {
 
     html! {<>
 
-                 if orders.is_empty() {
+                     if orders.is_empty() {
 
 
-                <h1 class="title">{"No pending orders!"}</h1>
-    <h2 class="subtitle">{":3"}</h2>
-            }
-            {
-
-
-
-                // orders.clone().into_iter().map(|a|{
-                 <Vec<OrderInfo> as Clone>::clone(&orders.clone()).into_iter().map(|a|{
-
-                html!{
-                    <div class="box">
-                    <div class="columns  is-mobile ">
-                    // class="column"
-                    <h1 class="title column">{format!("Order No: {}", a.order_no)}</h1>
-
-                    <button class="button is-small column is-danger is-narrow" onclick=
-
-                    {
-                        Callback::from(move |_|{
-
-                          wasm_bindgen_futures::spawn_local(async move {
-
-                        Client::complete(a.order_no).await.unwrap();
-                          })
-                    })
-                    }
-
-                    >{"Remove"}</button>
-                    </div>
-                    <div class="tags are-medium">
-                    <span class="tag is-link">{COFFEE_TYPE[a.coffee_info.coffee as usize]}</span>
-                    <span class="tag is-primary">{MILK_TYPE[a.coffee_info.milk as usize]}</span>
-                    <span class="tag is-info">{TEMP_TYPE[a.coffee_info.temp as usize]}</span>
-                    </div>
-                    </div>
+                    <h1 class="title">{"No pending orders!"}</h1>
+        <h2 class="subtitle">{":3"}</h2>
                 }
-            }).collect::<Vec<Html>>()
-            }
+                {
 
-        </>}
+
+
+                    // orders.clone().into_iter().map(|a|{
+                     <Vec<OrderInfo> as Clone>::clone(&orders.clone()).into_iter().map(|a|{
+
+                    html!{
+                        <div class="box">
+                        <div class="columns  is-mobile ">
+                        // class="column"
+                        <h1 class="title column">{format!("Order Name: {}", a.order_name)}</h1>
+
+                        <button class="button is-small column is-danger is-narrow" onclick=
+
+                        {
+                            Callback::from(move |_|{
+
+                              wasm_bindgen_futures::spawn_local(async move {
+
+                            Client::complete(a.id.unwrap()).await.unwrap();
+                              })
+                        })
+                        }
+
+                        >{"Remove"}</button>
+                        </div>
+
+
+                        {
+                        match a.coffee_info {
+                            shared::OrderPayload::Standard { coffee, milk, temp, sugar } => html!{
+
+                                    <div class="tags are-medium">
+                                    <span class="tag is-link">{COFFEE_TYPE[coffee]}</span>
+                                    <span class="tag is-primary">{MILK_TYPE[milk]}</span>
+                                    <span class="tag is-info">{TEMP_TYPE[temp]}</span>
+                                    </div>
+
+                            },
+                            shared::OrderPayload::Beth(str) => html!{
+
+                            }
+                        }}
+
+      //                  <div class="tags are-medium">
+    //                    <span class="tag is-link">{COFFEE_TYPE[a.coffee_info.coffee as usize]}</span>
+        //                <span class="tag is-primary">{MILK_TYPE[a.coffee_info.milk as usize]}</span>
+          //              <span class="tag is-info">{TEMP_TYPE[a.coffee_info.temp as usize]}</span>
+            //            </div>
+                        </div>
+                    }
+                }).collect::<Vec<Html>>()
+                }
+
+            </>}
 }

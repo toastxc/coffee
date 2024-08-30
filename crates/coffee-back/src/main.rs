@@ -1,26 +1,28 @@
-use std::collections::HashMap;
-use axum::http::{HeaderValue};
+use axum::http::HeaderValue;
 use axum::response::IntoResponse;
-use axum::{http::StatusCode, routing::{get, post}, Json, Router, Extension};
+use axum::routing::delete;
+use axum::{
+    http::StatusCode,
+    routing::{get, post},
+    Extension, Json, Router,
+};
 use dotenv::dotenv;
 use rand::random;
 use shared::{OrderInfo, OrderPayload};
+use std::collections::HashMap;
 use std::env;
 use std::sync::Arc;
 use std::time::SystemTime;
-use axum::routing::delete;
 use tokio::sync::RwLock;
 use tower_http::cors::{Any, CorsLayer};
 
 #[tokio::main]
 async fn main() {
-
     println!("INIT: starting...");
     // initialize tracing
     tracing_subscriber::fmt::init();
     dotenv().ok();
     println!("INIT: dotenv...");
-
 
     let db = Db::new();
     println!("INIT: db...");
@@ -60,33 +62,29 @@ async fn up() -> StatusCode {
 
 async fn order(
     Extension(db): Extension<Db>,
-    Json(payload): Json<OrderPayload>,
+    Json(payload): Json<OrderInfo>,
 ) -> impl IntoResponse {
     let rand = random::<u8>();
 
-    db.0.write().await.insert(rand, OrderInfo {
-        order_no: rand,
-        coffee_info: payload,
-        date: SystemTime::now(),
-    });
+    let mut payload = payload;
+    payload.date = Option::from(SystemTime::now());
+    db.0.write().await.insert(
+        rand,
+        payload,
+    );
     (StatusCode::OK, Json(rand))
 }
 
-async fn fetch(
-    Extension(db): Extension<Db>, ) -> impl IntoResponse {
+async fn fetch(Extension(db): Extension<Db>) -> impl IntoResponse {
     let mut list: Vec<OrderInfo> = db.0.read().await.iter().map(|a| a.1.clone()).collect();
     list.sort_by_key(|a| a.date);
     (StatusCode::OK, Json(list))
 }
 
-
-async fn complete(
-    Extension(db): Extension<Db>, Json(id): Json<u8>, ) -> impl IntoResponse {
+async fn complete(Extension(db): Extension<Db>, Json(id): Json<u8>) -> impl IntoResponse {
     let result = db.0.read().await.get(&id).cloned();
     match result {
-        None => {
-            StatusCode::NOT_FOUND
-        }
+        None => StatusCode::NOT_FOUND,
         Some(_) => {
             db.0.write().await.remove(&id);
             StatusCode::NO_CONTENT

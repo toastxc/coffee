@@ -9,7 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8bd36f30-c561-4e2a-995c-43905f3989ca" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +60,7 @@
     &quot;RunOnceActivity.rust.reset.selective.auto.import&quot;: &quot;true&quot;,
     &quot;Shell Script.front run.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/kaiaxc/projects/cargo-pak&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kaiaxc/projects/coffee&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -148,6 +148,7 @@
       <workItem from="1719300276007" duration="8000" />
       <workItem from="1719300398464" duration="1625000" />
       <workItem from="1719899317356" duration="2484000" />
+      <workItem from="1723687687387" duration="11735000" />
     </task>
     <servers />
   </component>
