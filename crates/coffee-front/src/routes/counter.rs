@@ -19,7 +19,7 @@ pub fn counter() -> Html {
                 loop {
                     let client = Client::fetch().await.unwrap();
                     orders.set(client);
-                    wasm_timer::Delay::new(Duration::from_secs(5))
+                    fluvio_wasm_timer::Delay::new(Duration::from_secs(5))
                         .await
                         .unwrap();
                 }

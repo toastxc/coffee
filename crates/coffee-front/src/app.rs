@@ -43,8 +43,8 @@ fn switch(routes: Route) -> Html {
         }
         Route::Counter => {
             html! {
-                <Counter/>
-            }
+            <Counter/>
+             }
         }
         _ => html!(),
     }
