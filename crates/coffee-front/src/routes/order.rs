@@ -186,7 +186,7 @@ pub fn dropbutton(props: &DropProps) -> Html {
                 ""
             };
 
-            html!{  <button class={format!("button {selected}")} onclick={Callback::from(move |_|{
+            html!{  <button type={"button"} class={format!("button {selected}")} onclick={Callback::from(move |_|{
                 setter.set(count);
             })}>{*value}</button>}
         }).collect::<Html>()
