@@ -1,10 +1,10 @@
 use yew::prelude::*;
 
 // use crate::routes::counter::Counter;
+use crate::routes::counter::Counter;
 use crate::routes::home::Home;
-use yew_router::prelude::*;
-
 use crate::routes::order::Order;
+use yew_router::prelude::*;
 
 #[derive(Clone, Routable, PartialEq)]
 pub enum Route {
@@ -41,11 +41,11 @@ fn switch(routes: Route) -> Html {
                 <Order/>
             }
         }
-        // Route::Counter => {
-        //     html! {
-        //         <Counter/>
-        //     }
-        // }
+        Route::Counter => {
+            html! {
+                <Counter/>
+            }
+        }
         _ => html!(),
     }
 }

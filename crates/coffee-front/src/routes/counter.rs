@@ -53,6 +53,7 @@ pub fn counter() -> Html {
                         {
                             Callback::from(move |_|{
 
+
                               wasm_bindgen_futures::spawn_local(async move {
 
                             Client::complete(a.id.unwrap()).await.unwrap();
@@ -77,6 +78,7 @@ pub fn counter() -> Html {
                             },
                             shared::OrderPayload::Beth(str) => html!{
 
+                                <p>{str}</p>
                             }
                         }}
 
