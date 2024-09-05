@@ -1,6 +1,6 @@
 use crate::api::Client;
 use shared::OrderInfo;
-use shared::{COFFEE_TYPE, MILK_TYPE, TEMP_TYPE};
+use shared::{COFFEE_TYPE, MILK_TYPE, SUGAR_TYPE, TEMP_TYPE};
 use std::time::Duration;
 use yew::prelude::*;
 
@@ -29,68 +29,64 @@ pub fn counter() -> Html {
 
     html! {<>
 
-                     if orders.is_empty() {
+                 if orders.is_empty() {
 
 
-                    <h1 class="title">{"No pending orders!"}</h1>
-        <h2 class="subtitle">{":3"}</h2>
-                }
-                {
+                <h1 class="title">{"No pending orders!"}</h1>
+    <h2 class="subtitle">{":3"}</h2>
+            }
+            {
 
 
 
-                    // orders.clone().into_iter().map(|a|{
-                     <Vec<OrderInfo> as Clone>::clone(&orders.clone()).into_iter().map(|a|{
+                // orders.clone().into_iter().map(|a|{
+                 <Vec<OrderInfo> as Clone>::clone(&orders.clone()).into_iter().map(|a|{
 
-                    html!{
-                        <div class="box">
-                        <div class="columns  is-mobile ">
-                        // class="column"
-                        <h1 class="title column">{format!("Order Name: {}", a.order_name)}</h1>
+                html!{
+                    <div class="box">
+                    <div class="columns  is-mobile ">
+                    // class="column"
+                    <h1 class="title column">{format!("Order Name: {}", a.order_name)}</h1>
 
-                        <button class="button is-small column is-danger is-narrow" onclick=
+                    <button class="button is-small column is-danger is-narrow" onclick=
 
-                        {
-                            Callback::from(move |_|{
-
-
-                              wasm_bindgen_futures::spawn_local(async move {
-
-                            Client::complete(a.id.unwrap()).await.unwrap();
-                              })
-                        })
-                        }
-
-                        >{"Remove"}</button>
-                        </div>
+                    {
+                        Callback::from(move |_|{
 
 
-                        {
-                        match a.coffee_info {
-                            shared::OrderPayload::Standard { coffee, milk, temp, sugar } => html!{
+                          wasm_bindgen_futures::spawn_local(async move {
 
-                                    <div class="tags are-medium">
-                                    <span class="tag is-link">{COFFEE_TYPE[coffee]}</span>
-                                    <span class="tag is-primary">{MILK_TYPE[milk]}</span>
-                                    <span class="tag is-info">{TEMP_TYPE[temp]}</span>
-                                    </div>
-
-                            },
-                            shared::OrderPayload::Beth(str) => html!{
-
-                                <p>{str}</p>
-                            }
-                        }}
-
-      //                  <div class="tags are-medium">
-    //                    <span class="tag is-link">{COFFEE_TYPE[a.coffee_info.coffee as usize]}</span>
-        //                <span class="tag is-primary">{MILK_TYPE[a.coffee_info.milk as usize]}</span>
-          //              <span class="tag is-info">{TEMP_TYPE[a.coffee_info.temp as usize]}</span>
-            //            </div>
-                        </div>
+                        Client::complete(a.id.unwrap()).await.unwrap();
+                          })
+                    })
                     }
-                }).collect::<Vec<Html>>()
-                }
 
-            </>}
+                    >{"Remove"}</button>
+                    </div>
+
+
+                    {
+                    match a.coffee_info {
+                        shared::OrderPayload::Standard { coffee, milk, temp, sugar } => html!{
+
+                                <div class="tags are-medium">
+                                <span class="tag is-link">{COFFEE_TYPE[coffee]}</span>
+                                <span class="tag is-primary">{MILK_TYPE[milk]}</span>
+                                <span class="tag is-info">{TEMP_TYPE[temp]}</span>
+                                <span class="tag is-warning">{SUGAR_TYPE[sugar]}</span>
+                                </div>
+
+                        },
+                        shared::OrderPayload::Beth(str) => html!{
+
+                            <p>{str}</p>
+                        }
+                    }}
+
+                    </div>
+                }
+            }).collect::<Vec<Html>>()
+            }
+
+        </>}
 }
