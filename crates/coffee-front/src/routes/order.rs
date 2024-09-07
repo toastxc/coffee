@@ -77,7 +77,7 @@ pub fn order() -> Html {
              <DropButton label="Interface" options={ui} selected={ui_type.clone()}/>
 
 
-           <TextInput label={"Name"} placeholder={None} required={true} value={customer_name}/>
+           <TextInput label={"Name"} placeholder={None} required={true} value={customer_name.clone()}/>
 
 
 
@@ -90,12 +90,6 @@ pub fn order() -> Html {
 
          }else {
 
-     //          <div class="field">
-     //   <label class="label">{"Order"}</label>
-     //   <div class="control">
-     //     <input class="input" type="text" placeholder="A large coffee with extra coffee"/>
-     //   </div>
-     // </div>
 
            <TextInput label={"Order"} placeholder={Some("Coffee with extra coffee")} required={true} value={coffee_type_custom}/>
 
@@ -121,12 +115,15 @@ pub fn order() -> Html {
                <p class="modal-card-title">{"Successfully ordered!"}</p>
              </header>
              <section class="modal-card-body">
-                 <h1>{format!("Order No {}", coffee_ordered.unwrap_or_default())}</h1>
+                 <h1>{format!("Order No {}", &coffee_ordered.unwrap_or_default())}</h1>
              </section>
              <footer class="modal-card-foot">
                <div class="buttons">
                  <button class="button is-success" onclick={Callback::from(move |_|{
                      coffee_ordered.set(None);
+
+                     customer_name.set(Default::default());
+
                  })}>{"Ok"}</button>
                </div>
              </footer>
