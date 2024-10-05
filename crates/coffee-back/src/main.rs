@@ -8,7 +8,7 @@ use axum::{
 };
 use dotenv::dotenv;
 use rand::random;
-use shared::{OrderInfo, OrderPayload};
+use shared::OrderInfo;
 use std::collections::HashMap;
 use std::env;
 use std::sync::Arc;
@@ -24,7 +24,7 @@ async fn main() {
     dotenv().ok();
     println!("INIT: dotenv...");
 
-    let db = Db::new();
+    let db = Db::default();
     println!("INIT: db...");
     // build our application with a route
     let app = Router::new()
@@ -88,13 +88,5 @@ async fn complete(Extension(db): Extension<Db>, Json(id): Json<u8>) -> impl Into
 }
 
 // order id | order info
-#[derive(Clone)]
+#[derive(Clone, Default)]
 pub struct Db(Arc<RwLock<HashMap<u8, OrderInfo>>>);
-
-impl Db {
-    pub fn new() -> Self {
-        Self {
-            0: Arc::new(Default::default()),
-        }
-    }
-}

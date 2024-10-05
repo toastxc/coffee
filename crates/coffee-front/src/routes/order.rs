@@ -5,7 +5,6 @@ use crate::api::Client;
 use shared::{COFFEE_TYPE, MILK_TYPE, SUGAR_TYPE, TEMP_TYPE};
 use wasm_bindgen::JsCast;
 use web_sys::HtmlInputElement;
-use yew::prelude::*;
 const SEL: &str = "Select dropdown";
 
 #[function_component(Order)]
