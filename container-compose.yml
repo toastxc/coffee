@@ -2,16 +2,21 @@ version: "3.8"
 
 
 services:
-
-  server:
+  back:
     build: ./crates/coffee-back
     ports:
       - "${BACK_PORT}:8081"
     command: [ "coffee-back" ]
     env_file:
       - .env
-    depends_on:
-      - db
     restart: always
-#    networks:
-#      - flops
+
+  front:
+    build: ./crates/coffee-front 
+    ports:
+      - "${FRONT_PORT}:8080"
+      #    command: [ "/usr/local/cargo/bin/coffee-front" ]
+    env_file:
+      - .env 
+    restart: always
+

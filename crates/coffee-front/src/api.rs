@@ -1,7 +1,7 @@
 use crate::env;
 use reqwasm::http::{Method, Request, Response};
 use reqwasm::Error;
-use shared::{OrderInfo, OrderPayload};
+use shared::OrderInfo;
 
 fn uri(i: impl Into<String>) -> String {
     let ssl = match env::APP_SSL_ENABLED
@@ -36,7 +36,7 @@ impl Client {
 
 // this section of client is for ordering
 impl Client {
-    pub async fn order(body: OrderPayload) -> Result<u8, Error> {
+    pub async fn order(body: OrderInfo) -> Result<u8, Error> {
         Self::send("/order", Some(body), Method::POST)
             .await?
             .json()

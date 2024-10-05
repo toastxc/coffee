@@ -1,10 +1,8 @@
-use yew::prelude::*;
-
 use crate::routes::counter::Counter;
 use crate::routes::home::Home;
-use yew_router::prelude::*;
-
 use crate::routes::order::Order;
+use yew::prelude::*;
+use yew_router::prelude::*;
 
 #[derive(Clone, Routable, PartialEq)]
 pub enum Route {
@@ -43,9 +41,14 @@ fn switch(routes: Route) -> Html {
         }
         Route::Counter => {
             html! {
-                <Counter/>
+            <Counter/>
+             }
+        }
+
+        Route::NotFound => {
+            html! {
+                <h1>{"404"}</h1>
             }
         }
-        _ => html!(),
     }
 }
